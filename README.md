@@ -13,14 +13,21 @@ mvn exec:java
 ### To compile and run tests ###
 mvn clean test
 
+### Our backend service is built with Jersey ###
+### to know more about jersey, visit: https://jersey.github.io/documentation/latest/index.html ###
+
 ### the most basic commands to curl ###
 curl http://localhost:8080/myapp/myresource
 
 ### To Package this app ###
 mvn clean package
 
+#### NOT SECURE INFORMATION, NEED TO MOVE TO OTHER PLACE###
+### Our service is deployed on AWS with aws beanstalk###
 
-#### NOT SECURE INFORMATION ###
+### To install beanstalk cli on MAC OS ###
+brew install awsebcli
+
 ### environment info ####
 Environment name
 
