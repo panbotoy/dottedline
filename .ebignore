@@ -1,0 +1,8 @@
+.elasticbeanstalk/*
+.idea/*
+*.iml
+target
+src
+pom.xml
+README.md
+!target/*.war

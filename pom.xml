@@ -29,6 +29,21 @@
                     <!--</execution>-->
                 <!--</executions>-->
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>com.example.main.MyDriver</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -50,6 +65,11 @@
             <artifactId>jersey-container-servlet-core</artifactId>
             <!-- use the following artifactId if you don't need servlet 2.x compatibility -->
             <!-- artifactId>jersey-container-servlet</artifactId -->
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-grizzly2-http</artifactId>
+            <version>2.26-b08</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.inject</groupId>

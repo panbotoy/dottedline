@@ -7,17 +7,17 @@ This application is going to work with Apache Maven!
 ### install maven on MacOS ###
 brew install maven
 
-### To run this app locally ###
-mvn exec:java
+### Our backend service is built with Jersey ###
+### to know more about jersey, visit: https://jersey.github.io/documentation/latest/index.html ###
 
 ### To compile and run tests ###
 mvn clean test
 
-### Our backend service is built with Jersey ###
-### to know more about jersey, visit: https://jersey.github.io/documentation/latest/index.html ###
+### To run this app locally ###
+mvn exec:java
 
 ### the most basic commands to curl ###
-curl http://localhost:8080/myapp/myresource
+curl http://localhost:9998/myresource
 
 ### To Package this app ###
 mvn clean package
