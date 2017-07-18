@@ -1,6 +1,6 @@
-package com.example.main;
+package com.interstate.main;
 
-import com.example.MyResource;
+import com.interstate.resources.MyResource;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
