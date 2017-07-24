@@ -27,9 +27,8 @@ public class DynamoDBAccessor {
         GetItemRequest request = new GetItemRequest()
                 .withKey(keysToGet)
                 .withTableName(tableName);
-        Map<String,AttributeValue> returnedItem =
-                _dynamoClient.getItem(request).getItem();
-
-        return returnedItem.get("1").toString();
+        Map<String,AttributeValue> returnedItem = _dynamoClient.getItem(request).getItem();
+        throw new RuntimeException("hello");
+        //return returnedItem.get("1").toString();
     }
 }

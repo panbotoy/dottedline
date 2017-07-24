@@ -1,6 +1,7 @@
 package com.interstate.main;
 
 import com.interstate.resources.MyResource;
+import org.apache.log4j.Logger;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -14,14 +15,16 @@ import java.net.URI;
  *
  */
 public class MyDriver {
+    private static final Logger logger = Logger.getLogger(MyDriver.class);
     public static void main(String [] args) {
         URI baseUri = UriBuilder.fromUri("http://localhost/").port(9998).build();
         ResourceConfig config = new ResourceConfig(MyResource.class);
+
         HttpServer server = GrizzlyHttpServerFactory.createHttpServer(baseUri, config);
         try {
             server.start();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Error with starting local grizzly server.", e);
         }
     }
 }
