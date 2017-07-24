@@ -1,11 +1,11 @@
-package com.interstate.ds.dynamo;
+package com.interstate.ds.dynamo.clients;
 
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 
 /**
- * Created by bopan on 7/16/17.
+ * The basic dynamo client wrapper class that wraps around {@link AmazonDynamoDB}
+ *
  */
 public class DynamoClient {
     private static AmazonDynamoDB INSTANCE = null;
@@ -13,6 +13,10 @@ public class DynamoClient {
     private DynamoClient() {
     }
 
+    /**
+     * TODO: remove the region into some config.
+     * @return
+     */
     public static AmazonDynamoDB getInstance() {
         if (INSTANCE == null) {
             AmazonDynamoDBClientBuilder builder = AmazonDynamoDBClientBuilder.standard();

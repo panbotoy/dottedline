@@ -1,7 +1,7 @@
 package com.interstate.models;
 
 /**
- * Created by bopan on 7/23/17.
+ * A pojo class for member entity.
  */
 public class Member {
     private long memberId;
@@ -9,17 +9,24 @@ public class Member {
     private String email;
     private String firstName;
     private String lastName;
+    private String password;
 
     public Member() {
 
     }
 
-    public Member(long memberId, String username, String email, String firstName, String lastName) {
+    public Member(long memberId,
+                  String username,
+                  String email,
+                  String firstName,
+                  String lastName,
+                  String password) {
         this.memberId = memberId;
         this.username = username;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.password = password;
     }
 
     public long getMemberId() {
@@ -40,6 +47,10 @@ public class Member {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public Member setMemberId(long memberId) {
@@ -67,6 +78,11 @@ public class Member {
         return this;
     }
 
+    public Member setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Member{" +
@@ -75,6 +91,7 @@ public class Member {
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

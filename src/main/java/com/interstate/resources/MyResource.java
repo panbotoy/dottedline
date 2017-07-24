@@ -1,20 +1,28 @@
 package com.interstate.resources;
 
-import com.interstate.ds.dynamo.DynamoDBAccessor;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.interstate.ds.dynamo.clients.DynamoDBAccessor;
+import com.interstate.ds.dynamo.transformers.MemberTransformer;
 import com.interstate.models.Member;
 import org.apache.http.HttpStatus;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Root resource (exposed at "myresource" path)
  */
 @Path("myresource")
 public class MyResource {
-    private final DynamoDBAccessor _dynamoDbAccessor = new DynamoDBAccessor();
+
+    @Autowired
+    private DynamoDBAccessor dynamoDbAccessor;
+
     private final Logger logger = Logger.getLogger(MyResource.class);
 
     /**
@@ -40,9 +48,16 @@ public class MyResource {
     @Path("{memberId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Member getMemberById(@PathParam("memberId") long memberId) {
-        logger.error(String.format("trying to get member for member Id %s", memberId));
-        //String testMember = _dynamoDbAccessor.get(null, "Member", null);
-        return new Member().setMemberId(123).setUsername("bopan").setEmail("bopan@isco.com");
+        logger.info(String.format("trying to get member for member Id %s", memberId));
+
+        HashMap<String,AttributeValue> keysToGet =
+                new HashMap<String,AttributeValue>();
+        AttributeValue attributeValue = new AttributeValue();
+        attributeValue.setS(String.valueOf(memberId));
+        keysToGet.put("memberId", attributeValue);
+
+        Map<String, AttributeValue> dynamoObj = dynamoDbAccessor.get("Member", keysToGet);
+        return MemberTransformer.dynamoToMember(dynamoObj);
     }
 
     /**
