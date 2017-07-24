@@ -1,7 +1,8 @@
 target
-.idea/*
+.idea
+logs
 *.iml
 # Elastic Beanstalk Files
-.elasticbeanstalk/*
+.elasticbeanstalk
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
